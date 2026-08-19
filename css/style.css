@@ -574,8 +574,8 @@ section {
 .memory-track {
     display: flex;
     gap: var(--sp-5);
-    
     padding-bottom: var(--sp-2);
+    will-change: transform;
 }
 
 .memory-card {
@@ -586,6 +586,9 @@ section {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     overflow: hidden;
+    content-visibility: auto;
+    contain-intrinsic-size: 320px 280px;
+    transform: translateZ(0);
     transition: transform 200ms ease, box-shadow 200ms ease;
 }
 .memory-card:hover {

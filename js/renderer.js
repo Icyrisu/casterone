@@ -45,7 +45,8 @@ function renderMemories(classId) {
                 src="${memory.image}"
                 alt="${memory.title}"
                 class="memory-image"
-                loading="eager"
+                loading="lazy"
+                decoding="async"
             >
             <div class="memory-fallback" style="display:none; align-items:center; justify-content:center; aspect-ratio:16/10; background:var(--clr-pink-soft); color:var(--clr-text-muted); font-size:0.85rem; font-weight:600; border-bottom:2px solid var(--clr-border);">
                 📷 ${memory.title}
