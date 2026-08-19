@@ -93,6 +93,38 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateActiveDot();
             }, 50);
         }, { passive: true });
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        carousel.addEventListener('mousedown', (e) => {
+            isDown = true;
+            carousel.style.scrollBehavior = 'auto';
+            carousel.style.scrollSnapType = 'none';
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            isDown = false;
+            carousel.style.scrollBehavior = 'smooth';
+            carousel.style.scrollSnapType = 'x mandatory';
+        });
+
+        carousel.addEventListener('mouseup', () => {
+            isDown = false;
+            carousel.style.scrollBehavior = 'smooth';
+            carousel.style.scrollSnapType = 'x mandatory';
+        });
+
+        carousel.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 1.5; 
+            carousel.scrollLeft = scrollLeft - walk;
+        });
     }
 
     const revealObserver = new IntersectionObserver(
