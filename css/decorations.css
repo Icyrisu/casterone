@@ -1,0 +1,82 @@
+/* =============================================================
+   CASTERONE — DECORATION SYSTEM
+   Digital class memory book visual language
+   ============================================================= */
+
+/* ── Base class ─────────────────────────────────────────────── */
+.deco {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+/* ── Content always sits above decorations ───────────────────── */
+.hero-inner,
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Keyframe animations ─────────────────────────────────────── */
+@keyframes d-float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+}
+@keyframes d-float-sm {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-4px); }
+}
+@keyframes d-pulse {
+    0%, 100% { opacity: var(--op, .4); transform: scale(1); }
+    50%       { opacity: calc(var(--op, .4) * 2); transform: scale(1.15); }
+}
+@keyframes d-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+@keyframes d-spin-ccw {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
+}
+@keyframes d-drift {
+    0%,100% { transform: translate(0, 0) rotate(0deg); }
+    33%     { transform: translate(4px,-6px) rotate(6deg); }
+    66%     { transform: translate(-3px, 4px) rotate(-4deg); }
+}
+@keyframes d-blink {
+    0%,100% { opacity: var(--op, .5); }
+    50%     { opacity: calc(var(--op, .5) * 0.3); }
+}
+
+/* ── Animation helpers ───────────────────────────────────────── */
+.d-float     { animation: d-float    3.5s ease-in-out infinite; }
+.d-float-sm  { animation: d-float-sm 5s   ease-in-out infinite; }
+.d-pulse     { animation: d-pulse    2.5s ease-in-out infinite; }
+.d-spin      { animation: d-spin     14s  linear      infinite; }
+.d-spin-ccw  { animation: d-spin-ccw 20s  linear      infinite; }
+.d-drift     { animation: d-drift    7s   ease-in-out infinite; }
+.d-blink     { animation: d-blink    3s   ease-in-out infinite; }
+
+.d-delay-1 { animation-delay: 0.5s; }
+.d-delay-2 { animation-delay: 1.0s; }
+.d-delay-3 { animation-delay: 1.5s; }
+.d-delay-4 { animation-delay: 2.0s; }
+.d-delay-5 { animation-delay: 2.5s; }
+.d-delay-6 { animation-delay: 3.0s; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .d-hide-mob { display: none !important; }
+}
+@media (max-width: 1024px) {
+    .d-hide-tab { display: none !important; }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .d-float, .d-float-sm, .d-pulse,
+    .d-spin, .d-spin-ccw, .d-drift, .d-blink {
+        animation: none !important;
+    }
+}
