@@ -579,7 +579,8 @@ section {
 }
 
 .memory-card {
-    flex: 0 0 320px;             
+    /* Show 3 cards per row by default: (100% - 2 gaps) / 3 */
+    flex: 0 0 calc((100% - (2 * var(--sp-5))) / 3);
     scroll-snap-align: start;
     background: var(--clr-white);
     border: 2px solid var(--clr-border);
@@ -590,6 +591,20 @@ section {
     contain-intrinsic-size: 320px 280px;
     transform: translateZ(0);
     transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+/* Tablet: 2 cards per view */
+@media (max-width: 1024px) {
+    .memory-card {
+        flex: 0 0 calc((100% - var(--sp-5)) / 2);
+    }
+}
+
+/* Mobile: 1 card per view */
+@media (max-width: 600px) {
+    .memory-card {
+        flex: 0 0 100%;
+    }
 }
 .memory-card:hover {
     transform: translateY(-4px);

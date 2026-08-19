@@ -65,11 +65,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.getElementById("memoryCarousel");
 
     function getScrollStep() {
-        
-        const firstCard = document.querySelector("#memoryTrack .memory-card");
-        if (!firstCard) return 340;
+        if (!carousel) return 340;
         const gap = 20; 
-        return firstCard.offsetWidth + gap;
+        return carousel.clientWidth + gap;
     }
 
     if (prevBtn && carousel) {
