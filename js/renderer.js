@@ -151,6 +151,12 @@ function renderSubjects(classId = "11") {
         `;
         container.appendChild(card);
     });
+
+    if (window._revealObserver) {
+        container.querySelectorAll(".subject-card").forEach(el => {
+            window._revealObserver.observe(el);
+        });
+    }
 }
 
 function scrollToCard(index) {

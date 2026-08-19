@@ -12,6 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTeacher(classId);
         renderMemories(classId);   
         renderSubjects(classId);
+
+        const aturanSection = document.getElementById("aturan");
+        const aturanNav = document.querySelector('a[href="#aturan"]');
+        if (aturanSection) {
+            aturanSection.style.display = classId === "11" ? "none" : "";
+        }
+        if (aturanNav) {
+            aturanNav.style.display = classId === "11" ? "none" : "";
+        }
     }
 
     function switchClass(classId, clickedBtn, otherBtn) {
