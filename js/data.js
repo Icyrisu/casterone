@@ -1,7 +1,3 @@
-// =============================================================
-// SHARED DATA — Aturan, Siswa, Mapel
-// =============================================================
-
 const rules = [
     "Datang tepat waktu dan mengikuti pembelajaran dengan baik.",
     "Menggunakan seragam sesuai ketentuan sekolah.",
@@ -16,7 +12,7 @@ const rules = [
 ];
 
 const students = [
-    "Adinda Indira Wijaya",
+"Adinda Indira Wijaya",
 "Adinda Tiara Ramadhani",
 "Ahmad Rangga Wijaya",
 "Al Izha Salwa",
@@ -55,11 +51,20 @@ const students = [
 ];
 
 const subjects = {
-    senin:   ["PKWU", "Senbud", "Sosio", "MTU"],
-    selasa:  ["MTL", "B. Sunda", "Sejarah", "Infor"],
-    rabu:    ["Ekonomi", "B. Indo", "BK", "PKN", "MTU"],
-    kamis:   ["PJOK", "B. Indo", "B. Inggris", "Infor"],
-    jumat:   ["Sosio", "MTL", "Ekonomi", "PAI"]
+    "11": {
+        senin:   ["MTK Umum", "Sosiologi", "B. Inggris", "PKN"],
+        selasa:  ["Sosiologi", "B. Indonesia", "PAI", "Informatika"],
+        rabu:    ["Ekonomi", "Sejarah", "MTK Umum", "BK", "Seni Budaya"],
+        kamis:   ["MTK TL", "B. Indonesia", "B. Sunda", "Informatika"],
+        jumat:   ["Ekonomi", "PKWU", "PJOK", "MTK TL"]
+    },
+    "12": {
+        senin:   ["PKWU", "Seni Budaya", "Sosiologi", "MTK Umum"],
+        selasa:  ["MTK TL", "B. Sunda", "Sejarah", "Informatika"],
+        rabu:    ["Ekonomi", "B. Indonesia", "BK", "PKN", "MTK Umum"],
+        kamis:   ["PJOK", "B. Indonesia", "B. Inggris", "Informatika"],
+        jumat:   ["Sosiologi", "MTK TL", "Ekonomi", "PAI"]
+    }
 };
 
 const dayLabels = {
@@ -67,171 +72,134 @@ const dayLabels = {
     kamis: "KAMIS", jumat: "JUMAT"
 };
 
-// =============================================================
-// CLASS DATA — Wali Kelas + Memori
-// =============================================================
-
 const classData = {
     "11": {
         teacher: {
             name: "Nama Wali Kelas 11 Abd. Wahidin, S.Pdi.Gr",
-            image: "assets/images/teachers/teacher-11.svg"
+            image: "assets/images/teachers/teacher-11.jpeg"
         },
 
-        // ==================================================
-        // MEMORI KELAS 11
-        // Untuk menambahkan memory baru:
-        //   1. Simpan foto ke: assets/images/memories/class-11/
-        //   2. Tambahkan object baru di bawah (ikuti format yang ada).
-        //   3. Simpan file. Selesai — tidak perlu mengubah HTML.
-        // ==================================================
         memories: [
             {
-                image: "assets/images/memories/class-11/memory-01.svg",
+                image: "assets/images/memories/class-11/memory-01.jpeg",
                 title: "Memory Class 11 - 1",
-                date: "first time fotbar kelas 11, 24 Juli 2025"
+                date: "First time fotbar Kelas 11 - 24 Juli 2025"
             },
             {
-                image: "assets/images/memories/class-11/memory-02.svg",
+                image: "assets/images/memories/class-11/memory-02.jpeg",
                 title: "Memory Class 11 - 2",
                 date: "First time seragam batik dan kebaya - 31 Juli 2026"
             },
             {
-                image: "assets/images/memories/class-11/memory-03.svg",
+                image: "assets/images/memories/class-11/memory-03.jpeg",
                 title: "Memory Class 11 - 3",
-                date: "Juara lomba agustus 19 - Agustus 2025"
+                date: "Juara lomba Agustus - 19 Agustus 2025"
             },
-            {    
-            
-                image: "assets/images/memories/class-11/memory-03.svg",
+            {
+                image: "assets/images/memories/class-11/memory-04.jpeg",
                 title: "Memory Class 11 - 4",
-                date: "Penampilan tugas seni budaya - 27 Agustus 2025"
+                date: "Penampilan tugas Seni Budaya - 27 Agustus 2025"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
-                date: "Penampilan perdana minions XI C1 - 29 Agustus 2025"
+                image: "assets/images/memories/class-11/memory-05.jpeg",
+                title: "Memory Class 11 - 5",
+                date: "Penampilan perdana Minions XI C1 - 29 Agustus 2025"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
-                date: "Pemilihan ketua osis - 18 September 2025"
+                image: "assets/images/memories/class-11/memory-06.jpeg",
+                title: "Memory Class 11 - 6",
+                date: "Pemilihan Ketua OSIS - 18 September 2025"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
-                date: "Penampilan minions kedua - 24 Oktober 2025"
+                image: "assets/images/memories/class-11/memory-07.jpeg",
+                title: "Memory Class 11 - 7",
+                date: "Penampilan Minions kedua - 24 Oktober 2025"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
+                image: "assets/images/memories/class-11/memory-08.jpeg",
+                title: "Memory Class 11 - 8",
                 date: "Petugas upacara perdana - 27 Oktober 2025"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
+                image: "assets/images/memories/class-11/memory-09.jpeg",
+                title: "Memory Class 11 - 9",
                 date: "Kokurikuler - 28 November 2025"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
+                image: "assets/images/memories/class-11/memory-10.jpeg",
+                title: "Memory Class 11 - 10",
                 date: "Pembagian hadiah - 15 Desember 2025"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
-                date: "Makan makan menyambut bulan suci ramadhan - 15 Febuari 2026"
+                image: "assets/images/memories/class-11/memory-11.jpeg",
+                title: "Memory Class 11 - 11",
+                date: "Makan-makan menyambut bulan suci Ramadhan - 15 Februari 2026"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
-                date: "Buka bersama smanunggal - 12, maret 2026"
+                image: "assets/images/memories/class-11/memory-12.jpeg",
+                title: "Memory Class 11 - 12",
+                date: "Buka bersama Smanunggal - 12 Maret 2026"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
-                date: "Hari Kartini 21 April 2026"
+                image: "assets/images/memories/class-11/memory-13.jpeg",
+                title: "Memory Class 11 - 13",
+                date: "Hari Kartini - 21 April 2026"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
-                date: "Senam 8 Mei 2026"
+                image: "assets/images/memories/class-11/memory-14.jpeg",
+                title: "Memory Class 11 - 14",
+                date: "Senam - 8 Mei 2026"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
-                date: "Latihan Sejarah 14 Mei 2026"
+                image: "assets/images/memories/class-11/memory-15.jpeg",
+                title: "Memory Class 11 - 15",
+                date: "Latihan Sejarah - 14 Mei 2026"
             },
             {
-                  image: "assets/images/memories/class-11/memory-03.svg",
-                title: "Memory Class 11 - 3",
-                date: "Pentas Drama Sejarah Indonesia 19 Mei 2026"
-            },    
-            
-
-
-            
-            // Tambahkan memory baru di sini ↓
-            // {
-            //     image: "assets/images/memories/class-11/memory-04.jpg",
-            //     title: "Nama Kegiatan",
-            //     date: "DD Bulan YYYY"
-            // },
+                image: "assets/images/memories/class-11/memory-16.jpeg",
+                title: "Memory Class 11 - 16",
+                date: "Pentas Drama Sejarah Indonesia - 19 Mei 2026"
+            }
         ]
     },
 
     "12": {
         teacher: {
             name: "Nama Wali Kelas 12 Nurul Farhanah, S. Kom.Gr",
-            image: "assets/images/teachers/teacher-12.svg"
+            image: "assets/images/teachers/teacher-12.jpeg"
         },
 
-        // ==================================================
-        // MEMORI KELAS 12
-        // Untuk menambahkan memory baru:
-        //   1. Simpan foto ke: assets/images/memories/class-12/
-        //   2. Tambahkan object baru di bawah (ikuti format yang ada).
-        //   3. Simpan file. Selesai — tidak perlu mengubah HTML.
-        // ==================================================
         memories: [
             {
-                image: "assets/images/memories/class-12/memory-01.svg",
+                image: "assets/images/memories/class-12/memory-01.jpeg",
                 title: "Memory Class 12 - 1",
-                date: "Gift Beng-Beng From Bu Han - 6 Agustus 2026"
+                date: "Penampilan perdana Minions XII C1 - 31 Juli 2026"
             },
             {
-                image: "assets/images/memories/class-12/memory-02.svg",
+                image: "assets/images/memories/class-12/memory-02.jpeg",
                 title: "Memory Class 12 - 2",
-                date: "Olaharaga bersama guru magang - 07 Agustus 2026"
+                date: "Penampilan Minions Rangga & Cinta - 31 Juli 2026"
             },
             {
-                image: "assets/images/memories/class-12/memory-03.svg",
+                image: "assets/images/memories/class-12/memory-03.jpeg",
                 title: "Memory Class 12 - 3",
-                date: "penampilan perdana minions XII C1 - 31 Juli 2026"
+                date: "Gift Beng-Beng from Bu Han - 6 Agustus 2026"
             },
             {
-                image: "assets/images/memories/class-12/memory-03.svg",
-                title: "Memory Class 12 - 3",
-                date: "penampilan minions Rangga & Cinta - 31 Juli2026"
+                image: "assets/images/memories/class-12/memory-04.jpeg",
+                title: "Memory Class 12 - 4",
+                date: "Olahraga bersama guru magang - 7 Agustus 2026"
             },
             {
-                image: "assets/images/memories/class-12/memory-03.svg",
-                title: "Memory Class 12 - 3",
-                date: "Senam perdana kelas XII - 14 Agustus 2026"
+                image: "assets/images/memories/class-12/memory-05.jpeg",
+                title: "Memory Class 12 - 5",
+                date: "Senam perdana Kelas XII - 14 Agustus 2026"
             },
             {
-                image: "assets/images/memories/class-12/memory-03.svg",
-                title: "Memory Class 12 - 3",
-                date: "Lomba 17 agustus - 18 Agustus 2026"
-            },
-
-
-            // Tambahkan memory baru di sini ↓
-            // {
-            //     image: "assets/images/memories/class-12/memory-04.jpg",
-            //     title: "Nama Kegiatan",
-            //     date: "DD Bulan YYYY"
-            // },
+                image: "assets/images/memories/class-12/memory-06.jpeg",
+                title: "Memory Class 12 - 6",
+                date: "Lomba 17 Agustus - 18 Agustus 2026"
+            }
         ]
     }
 };

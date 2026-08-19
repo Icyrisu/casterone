@@ -1,12 +1,9 @@
-// SVG icon helpers — consistent 2px stroke style
+
 const icons = {
     calendar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,
     bookOpen:  `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`
 };
 
-// ─────────────────────────────────────────────
-// TEACHER
-// ─────────────────────────────────────────────
 function renderTeacher(classId) {
     const teacher = classData[classId].teacher;
     const teacherImage = document.getElementById("teacher-image");
@@ -22,9 +19,6 @@ function renderTeacher(classId) {
     }, 150);
 }
 
-// ─────────────────────────────────────────────
-// MEMORIES — horizontal carousel
-// ─────────────────────────────────────────────
 function renderMemories(classId) {
     const memories   = classData[classId].memories || [];
     const track      = document.getElementById("memoryTrack");
@@ -33,17 +27,14 @@ function renderMemories(classId) {
 
     if (!track || !pagination || !carousel) return;
 
-    // 1. Clear previous content
     track.innerHTML      = "";
     pagination.innerHTML = "";
 
-    // 2. Empty state
     if (memories.length === 0) {
         track.innerHTML = '<div class="memory-empty">Belum ada memori untuk kelas ini.</div>';
         return;
     }
 
-    // 3. Build cards
     memories.forEach((memory, i) => {
         const card = document.createElement("div");
         card.className = "memory-card";
@@ -64,7 +55,7 @@ function renderMemories(classId) {
                 <p class="memory-date">${icons.calendar}${memory.date}</p>
             </div>
         `;
-        // Wire up image error fallback after appending to DOM
+        
         const img = card.querySelector('.memory-image');
         const fallback = card.querySelector('.memory-fallback');
         if (img && fallback) {
@@ -77,7 +68,6 @@ function renderMemories(classId) {
         track.appendChild(card);
     });
 
-    // 4. Build dot pagination (only if more than 1 memory)
     if (memories.length > 1) {
         memories.forEach((_, i) => {
             const dot = document.createElement("button");
@@ -89,13 +79,10 @@ function renderMemories(classId) {
         });
     }
 
-    // 5. Reset carousel scroll to beginning
     carousel.scrollLeft = 0;
 
-    // 6. Update arrow states
     updateCarouselButtons();
 
-    // 7. Register new cards with the IntersectionObserver if available
     if (window._revealObserver) {
         track.querySelectorAll(".memory-card").forEach(el => {
             window._revealObserver.observe(el);
@@ -103,9 +90,6 @@ function renderMemories(classId) {
     }
 }
 
-// ─────────────────────────────────────────────
-// RULES
-// ─────────────────────────────────────────────
 function renderRules() {
     const container = document.getElementById("rules-container");
     container.innerHTML = "";
@@ -122,9 +106,6 @@ function renderRules() {
     });
 }
 
-// ─────────────────────────────────────────────
-// STUDENTS
-// ─────────────────────────────────────────────
 function renderStudents() {
     const container    = document.getElementById("students-container");
     const countElement = document.getElementById("student-count");
@@ -144,15 +125,14 @@ function renderStudents() {
     });
 }
 
-// ─────────────────────────────────────────────
-// SUBJECTS
-// ─────────────────────────────────────────────
-function renderSubjects() {
+function renderSubjects(classId = "11") {
     const container = document.getElementById("subjects-container");
     container.innerHTML = "";
 
-    Object.keys(subjects).forEach(dayKey => {
-        const dailySubjects = subjects[dayKey];
+    const classSubjects = subjects[classId] || subjects["11"];
+
+    Object.keys(classSubjects).forEach(dayKey => {
+        const dailySubjects = classSubjects[dayKey];
         const dayLabel      = dayLabels[dayKey];
 
         const card = document.createElement("div");
@@ -173,11 +153,6 @@ function renderSubjects() {
     });
 }
 
-// ─────────────────────────────────────────────
-// CAROUSEL HELPERS (called from main.js too)
-// ─────────────────────────────────────────────
-
-/** Scroll carousel to a specific card index */
 function scrollToCard(index) {
     const carousel = document.getElementById("memoryCarousel");
     const cards    = document.querySelectorAll("#memoryTrack .memory-card");
@@ -186,7 +161,6 @@ function scrollToCard(index) {
     carousel.scrollTo({ left: cardLeft, behavior: "smooth" });
 }
 
-/** Update prev/next button disabled state */
 function updateCarouselButtons() {
     const carousel = document.getElementById("memoryCarousel");
     const prevBtn  = document.getElementById("memoryPrev");
@@ -202,14 +176,12 @@ function updateCarouselButtons() {
     nextBtn.setAttribute("aria-disabled", atEnd);
 }
 
-/** Update active dot based on current scroll position */
 function updateActiveDot() {
     const carousel = document.getElementById("memoryCarousel");
     const cards    = document.querySelectorAll("#memoryTrack .memory-card");
     const dots     = document.querySelectorAll("#memoryPagination .memory-dot");
     if (!carousel || cards.length === 0 || dots.length === 0) return;
 
-    // Find which card is most visible in the carousel viewport
     const carouselLeft = carousel.scrollLeft;
     let closestIndex = 0;
     let closestDist  = Infinity;
@@ -224,11 +196,7 @@ function updateActiveDot() {
     });
 }
 
-// ─────────────────────────────────────────────
-// INIT
-// ─────────────────────────────────────────────
 function initRender() {
     renderRules();
     renderStudents();
-    renderSubjects();
 }

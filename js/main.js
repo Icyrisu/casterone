@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ─── 1. Render all static content ──────────────────────────
     initRender();
 
-    // ─── 2. Class switcher ──────────────────────────────────────
     let activeClass = "11";
 
     const btnClass11 = document.getElementById("btn-class-11");
@@ -12,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateClassContent(classId) {
         if (!classData[classId]) return;
         renderTeacher(classId);
-        renderMemories(classId);   // also resets carousel + dots
+        renderMemories(classId);   
+        renderSubjects(classId);
     }
 
     function switchClass(classId, clickedBtn, otherBtn) {
@@ -26,10 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
     btnClass11.addEventListener("click", () => switchClass("11", btnClass11, btnClass12));
     btnClass12.addEventListener("click", () => switchClass("12", btnClass12, btnClass11));
 
-    // Initial class render
     updateClassContent(activeClass);
 
-    // ─── 3. Mobile menu ─────────────────────────────────────────
     const menuToggle = document.querySelector(".menu-toggle");
     const nav        = document.getElementById("main-navigation");
     const navLinks   = document.querySelectorAll(".nav-link");
@@ -54,16 +51,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ─── 4. Carousel arrow buttons ──────────────────────────────
     const prevBtn  = document.getElementById("memoryPrev");
     const nextBtn  = document.getElementById("memoryNext");
     const carousel = document.getElementById("memoryCarousel");
 
     function getScrollStep() {
-        // Scroll by the width of one card + gap
+        
         const firstCard = document.querySelector("#memoryTrack .memory-card");
         if (!firstCard) return 340;
-        const gap = 20; // matches --sp-5
+        const gap = 20; 
         return firstCard.offsetWidth + gap;
     }
 
@@ -79,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Update dots + buttons on scroll (debounced)
     if (carousel) {
         let scrollTimer;
         carousel.addEventListener("scroll", () => {
@@ -91,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }, { passive: true });
     }
 
-    // ─── 5. Scroll Reveal — IntersectionObserver ────────────────
     const revealObserver = new IntersectionObserver(
         (entries) => {
             entries.forEach(entry => {
@@ -104,10 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
         { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
 
-    // Expose so renderer.js can register dynamically injected cards
     window._revealObserver = revealObserver;
 
-    // Observe all .reveal elements after a RAF (DOM fully painted)
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             document.querySelectorAll(".reveal").forEach(el => {
@@ -116,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ─── 6. Stagger delays for large static grids ───────────────
     function applyStagger(gridId, step = 60, max = 420) {
         const grid = document.getElementById(gridId);
         if (!grid) return;
