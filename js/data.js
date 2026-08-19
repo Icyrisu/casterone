@@ -133,31 +133,36 @@ const classData = {
             {
                 image: "assets/images/memories/class-11/memory-11.jpeg",
                 title: "Memory Class 11 - 11",
-                date: "Makan-makan menyambut bulan suci Ramadhan - 15 Februari 2026"
+                date: "Setelah kegiatan olahraga - 30 Januari 2026"
             },
             {
                 image: "assets/images/memories/class-11/memory-12.jpeg",
                 title: "Memory Class 11 - 12",
-                date: "Buka bersama Smanunggal - 12 Maret 2026"
+                date: "Makan-makan menyambut bulan suci Ramadhan - 15 Februari 2026"
             },
             {
                 image: "assets/images/memories/class-11/memory-13.jpeg",
                 title: "Memory Class 11 - 13",
-                date: "Hari Kartini - 21 April 2026"
+                date: "Buka bersama Smanunggal - 12 Maret 2026"
             },
             {
                 image: "assets/images/memories/class-11/memory-14.jpeg",
                 title: "Memory Class 11 - 14",
-                date: "Senam - 8 Mei 2026"
+                date: "Hari Kartini - 21 April 2026"
             },
             {
                 image: "assets/images/memories/class-11/memory-15.jpeg",
                 title: "Memory Class 11 - 15",
-                date: "Latihan Sejarah - 14 Mei 2026"
+                date: "Senam - 8 Mei 2026"
             },
             {
                 image: "assets/images/memories/class-11/memory-16.jpeg",
                 title: "Memory Class 11 - 16",
+                date: "Latihan Sejarah - 14 Mei 2026"
+            },
+            {
+                image: "assets/images/memories/class-11/memory-17.jpeg",
+                title: "Memory Class 11 - 17",
                 date: "Pentas Drama Sejarah Indonesia - 19 Mei 2026"
             }
         ]
